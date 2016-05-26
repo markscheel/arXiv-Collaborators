@@ -1,15 +1,13 @@
-import feedparser
-import os
-import datetime
+import feedparser as fp
+from datetime import datetime as dt
 import time
-import sys
 
 arXiv_url = 'http://export.arxiv.org/api/query?search_query=au:{0}&id_list=&start=0&max_results=10000'
 
 def main():
 	author_list = open('Input/Authors.dat', 'r').readlines()
 
-	date_time = datetime.datetime.now().strftime('%Y_%M_%d_%H_%M_%S')
+	date_time = dt.now().strftime('%Y_%M_%d_%H_%M_%S')
 
 	for author in author_list:
 
@@ -17,7 +15,7 @@ def main():
 		file_out = open('Output/{0}_{1}.dat'.format(date_time, author.strip()), 'w')
 
 		# Get the data from arXiv
-		author_feed = feedparser.parse(arXiv_url.format(author.rstrip()))
+		author_feed = fp.parse(arXiv_url.format(author.rstrip()))
 
 		# Create an empty dict to store counts of the coauthors
 		coauthors = {}
@@ -44,7 +42,7 @@ def main():
 			print('{0}, {1}'.format(c, coauthors[c]), file=file_out)
 
 		file_out.close()
-		
+
 	# Limit the query rate to be nice to the arXiv servers.
 	time.sleep(3)
 
