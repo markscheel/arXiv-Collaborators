@@ -9,7 +9,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-Place the authors to query into `Input/Authors.dat`, formatted as they appear when searching in arXiv, for example Joseph Polchinski is formatted as `Polchinski_J`.
+Place the authors to query into `Input/Authors.dat`, one per line and formatted as they appear when searching in arXiv, for example Joseph Polchinski is formatted as `Polchinski_J`. An example author list is also provided.
 
 Run with 
 ```
