@@ -3,32 +3,34 @@ import os
 import datetime
 import time
 
+arXiv_url = 'http://export.arxiv.org/api/query?search_query=au:{0}&id_list=&start=0&max_results=10000'
+
 def main():
-	filename = 'Authors'
+	author_list = open('Input/Authors.dat', 'r').readlines()
 
-	arXiv_url = 'http://export.arxiv.org/api/query?search_query=au:AUTHOR&id_list=&start=0&max_results=10000'
-
-	if os.path.exists(filename + '_Out.txt'): os.remove(filename + '_Out.txt')
-
-	file_in = open('Input/' + filename + '_In.txt', 'r')
-	file_out = open('Output/' + filename + '_Out.txt', 'w')
-
-	author_list = file_in.readlines()
+	date_time = datetime.datetime.now().strftime('%Y_%M_%d_%H_%M_%S')
 
 	for author in author_list:
-		print(author.strip().replace('_', ', '))
-		print(author.strip().replace('_', ', '), end = '\n', file = file_out)
-		author_feed = feedparser.parse(arXiv_url.replace('AUTHOR', author.rstrip()))
+		file_out = open('Output/{0}_{1}.dat'.format(date_time, author.strip()), 'w')
+		author_feed = feedparser.parse(arXiv_url.format(author.rstrip()))
 
-		i = 0
+		coauthors = {}
+
+		count = 0		
+		total = len(author_feed.entries)
 		for author_paper in author_feed.entries:
-			i += 1
-			count = str(i)
-			print(count + ' ' + author_paper.title)
+			count += 1
+			print('{0}/{1}: {2}'.format(count, total, author_paper.title))
+		
 			for coauthor in author_paper.authors:
-		 		name = coauthor.name
-		 		print(name, end = '\n', file = file_out)
-			time.sleep(3)
+		 		try:
+		 			coauthors[coauthor.name] += 1
+		 		except KeyError:
+		 			coauthors[coauthor.name] = 1
+		for c in coauthors:
+			print('{0}, {1}'.format(c, coauthors[c]), file=file_out)
+
+	time.sleep(3)
 
 if __name__ == '__main__':
 	main()
