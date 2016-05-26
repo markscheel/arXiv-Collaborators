@@ -2,6 +2,7 @@ import feedparser
 import os
 import datetime
 import time
+import sys
 
 arXiv_url = 'http://export.arxiv.org/api/query?search_query=au:{0}&id_list=&start=0&max_results=10000'
 
@@ -23,11 +24,12 @@ def main():
 
 		count = 0
 		total = len(author_feed.entries)
+
 		for author_paper in author_feed.entries:
 
 			# Print out which paper we're up to so we can keep track as its running.
 			count += 1
-			print('{0}/{1}: {2}'.format(count, total, author_paper.title))
+			print('{0}/{1}: {2}'.format(count, total, author_paper.title.encode('utf-8')))
 
 			for coauthor in author_paper.authors:
 		 		# Try to increase the count in the dict, if an exception is
@@ -41,6 +43,8 @@ def main():
 		for c in coauthors:
 			print('{0}, {1}'.format(c, coauthors[c]), file=file_out)
 
+		file_out.close()
+		
 	# Limit the query rate to be nice to the arXiv servers.
 	time.sleep(3)
 
