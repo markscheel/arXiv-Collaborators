@@ -14,9 +14,9 @@ pip install -r requirements.txt
 ## Usage
 Run with
 ```
-python arxiv-collaborators.py --arxiv-name Deppe_N --years 4 --formatting NsfProposal > ForNsf.csv
+python arxiv-collaborators.py --arxiv-name Deppe_N --years 4 --formatting NsfProposal > ForNsf.tsv
 ```
-The output is printed to screen, so I recommend streaming to a CSV or TSV file.
+The output is printed to screen, so I recommend streaming to a TSV file.
 
 Note that authors that do not have an affiliation are printed to terminal
 (stderr) so that you know who to add affiliations for.

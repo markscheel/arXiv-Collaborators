@@ -237,10 +237,10 @@ def print_authors(author,
             to_print = str(
                 f'{get_last_name_first(coauthors[name][5])}').strip()
             if coauthors[name][5] in affiliations:
-                to_print += f',{affiliations[coauthors[name][5]]}'
+                to_print += f'\t{affiliations[coauthors[name][5]]}'
             else:
                 print(f"Could find an affiliation for {coauthors[name][5]}", file=sys.stderr)
-            to_print += f', ,{coauthors[name][2]}/{coauthors[name][3]}/{coauthors[name][1]}'
+            to_print += f'\t\t{coauthors[name][2]}/{coauthors[name][3]}/{coauthors[name][1]}'
             print(to_print)
 
 
