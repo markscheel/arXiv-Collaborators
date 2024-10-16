@@ -25,3 +25,8 @@ In the script there are two dictionaries. `remapped_names` is for dealing with
 authors who have multiple names on the arxiv. `affiliations` is for associating
 people with institutions. These will be dependent on your use-case and could
 easily be factored out into a separate file for added flexibility.
+
+## NSF COA Template Excel file
+It seems that the NSF website is fairly picky about the exact formatting. As a
+result, I've had to use Excel (Office 365 seems to work), but Apple Numbers
+doesn't save the Excel file in quite the right format for some reason.
