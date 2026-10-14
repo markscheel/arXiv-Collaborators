@@ -25,7 +25,6 @@ remapped_names = {
     "Larry Kidder": "Lawrence E. Kidder",
     "Mark A Scheel": "Mark A. Scheel",
     "Matthew Duez": "Matthew D. Duez",
-    "Nils Deppe": "Deppe_Nils",
     "Nils Fischer": "Nils L. Vu",
     "Nils L. Fischer": "Nils L. Vu",
     "Nils Vu": "Nils L. Vu",
