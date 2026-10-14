@@ -14,7 +14,10 @@ from enum import Enum
 import feedparser as fp
 
 remapped_names = {
+    "Aaron Zimmerman" : "Aaron B. Zimmerman",
+    "Alexander Knight" : "Alexander L. Knight",
     "Béla Szilágyi": "Bela Szilagyi",
+    "Brian Metzger" : "Brian D. Metzger",
     "Cristóbal Armaza": "Cristobal Armaza",
     "Daniel A. Hemberger": "Daniel Hemberger",
     "Francois Hebert": "François Hébert",
@@ -23,6 +26,7 @@ remapped_names = {
     "Harald Pfeiffer": "Harald P. Pfeiffer",
     "Isabella Pretto": "Isabella G. Pretto",
     "Larry Kidder": "Lawrence E. Kidder",
+    "Lawrence Kidder": "Lawrence E. Kidder",
     "Mark A Scheel": "Mark A. Scheel",
     "Matthew Duez": "Matthew D. Duez",
     "Nils Fischer": "Nils L. Vu",
@@ -37,6 +41,7 @@ affiliations = {
     "Abhishek Ravishankar": "University of Massachusetts Dartmouth",
     "Adam Pound": "University of Southampton",
     "Adhrit Ravichandran": "University of Massachusetts Dartmouth",
+    "Alessandra Buonanno": "Albert Einstein Institute",
     "Alessandro Nagar": "INFN Sezione di Torino",
     "Alexander Carpenter": "Cal State Fullerton",
     "Alexander Chernoglazov": "University of Maryland",
@@ -113,6 +118,7 @@ affiliations = {
     "Leda Gao": "Wake Forest University",
     "Leo C. Stein": "University of Mississippi",
     "Leor Barack": "University of Southampton",
+    "Lennox S. Keeble" : "Wake Forest University",
     "Ling Sun": "The Australian National University",
     "Lorena Magaña Zertuche": "Niels Bohr Institute",
     "Luisa T. Buchman": "Washington State University, Pullman",
@@ -138,7 +144,8 @@ affiliations = {
     "Nicholas Demos": "Cal State Fullerton",
     "Nicholas Demos": "MIT",
     "Nicholas J. Corso": "Cornell University",
-    "Nikolas A. Wittek": "Albert Einstein Institute",
+    "Nikolas A. Wittek": "Caltech",
+    "Nils Deppe": "Cornell University",
     "Nils L. Vu": "Caltech",
     "Noora Ghadiri": "University of Illinois Urbana-Champaign",
     "Nousha Afshari": "Cal State Fullerton",
@@ -713,6 +720,8 @@ def print_authors(author,
                   f'[{",".join(sorted(paper.sources))}]', file=sys.stderr)
         if 'arxiv' not in paper.sources:
             missing_from_arxiv.append(paper)
+            # Let's not count authors from those papers.
+            continue
 
         # Count each coauthor at most once per paper, even if the paper was
         # found in several sources.

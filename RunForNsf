@@ -1,1 +1,1 @@
-~/miniconda3/bin/python arxiv-collaborators.py --arxiv-name Scheel_M --years 4 --formatting NsfProposal --orcid 0000-0001-6656-9134 > ForNsf.tsv
+~/miniconda3/bin/python arxiv-collaborators.py --arxiv-name Scheel_Mark --years 4 --formatting NsfProposal --orcid 0000-0001-6656-9134 --inspire-bai M.A.Scheel.1 --check-affiliations --show-papers > ForNsf.tsv
